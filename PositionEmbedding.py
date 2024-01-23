@@ -29,10 +29,10 @@ class PositionEmbedding(torch.nn.Module):
         self.embed.weight.data.normal_(0, 0.1)
 
     def forward(self, x):
-
+        # print("x",x.device)
         embed = self.embed(x)
-        # print(embed.shape)
-        # print(self.pe.shape)
+        # print("embed",embed.device)
+        # print("pe",self.pe.device)
         embed = embed + self.pe
         return embed
 

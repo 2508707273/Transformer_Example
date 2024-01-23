@@ -20,9 +20,14 @@ class Transformer(torch.nn.Module):
         self.fc = torch.nn.Linear(in_features=48, out_features=48)
 
     def forward(self, x, y):
+        # 把x和y移动到合适的设备上
+        # x = x.to("cuda")
+        # y = y.to("cuda")
+
         # [b, 1, 50, 50]
         mask_pad_x = mask_pad(x)
         mask_tril_y = mask_tril(y)
+        # print("mask_pad_x= ", mask_pad_x.device)
 
         # 编码,添加位置信息
         # x = [b, 50] -> [b, 50, 48]
